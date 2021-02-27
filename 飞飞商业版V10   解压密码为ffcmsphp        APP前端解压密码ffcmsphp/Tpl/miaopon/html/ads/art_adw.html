@@ -1,0 +1,7 @@
+{if condition="$GLOBALS['config']['site']['art_wads_style'] eq 1"}
+<a class="hidden_xs" href="{$feifeicms.art_wads_link}" rel="nofollow" target="_blank"><img src="{:ffcms_url_img($feifeicms.art_wads_imgpc)}"></a>
+<a class="hidden_mb" href="{$feifeicms.art_wads_link}" rel="nofollow" target="_blank"><img src="{:ffcms_url_img($feifeicms.art_wads_imgmo)}"></a>
+{/if}
+{if condition="$GLOBALS['config']['site']['art_wads_style'] eq 2"}
+{$feifeicms.art_wads_content}
+{/if}

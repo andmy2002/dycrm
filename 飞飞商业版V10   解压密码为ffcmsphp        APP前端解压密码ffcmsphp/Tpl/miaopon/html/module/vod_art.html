@@ -1,0 +1,15 @@
+{feifeicms:type ids="5" order="asc" by="sort"}
+<div class="pannel clearfix">
+	<div class="pannel_head clearfix">
+		{feifeicms:type order="asc" by="sort" mid="2" ids="5"}
+		<a class="text_muted pull_right" href="{:ffcms_url_type($vo)}">更多<i class="iconfont more_i">&#xe623;</i></a>
+		{/feifeicms:type}
+		<h3 class="title">推荐阅读</h3>						
+	</div>
+    <ul class="art_relates clearfix">
+        {feifeicms:art num="6" ids="'.$obj['vod_rel_art'].'" order="desc" by="time"}
+		{include file="widget/art_box_right"}
+        {/feifeicms:art}
+	</ul>
+</div>
+{/feifeicms:type}

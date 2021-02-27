@@ -1,0 +1,37 @@
+{include file="../../../application/admin/view/public/head" /}
+<div class="page-container p10">
+
+<blockquote class="layui-elem-quote layui-quote-nm">
+    <div class="my-toolbar-box">
+        <div class="layui-btn-group">
+			{if condition="$csh eq 0"}
+            <a data-href="{:url('chushihua')}" data-title="初始化操作" class="layui-btn layui-btn-primary j-iframe"><i class="layui-icon">&#xe614;</i>初始化</a>
+			{else /}
+			<a data-href="{:url('jinri')}" data-title="今日数据" class="layui-btn layui-btn-primary j-iframe"><i class="layui-icon">&#xe62d;</i>今日数据</a>
+			<a data-href="{:url('shujuchaxun')}" data-title="数据查询" class="layui-btn layui-btn-primary j-iframe"><i class="layui-icon">&#xe62d;</i>数据查询</a>
+			<a data-href="{:url('zonlan')}" data-title="历史总览" class="layui-btn layui-btn-primary j-iframe"><i class="layui-icon">&#xe62d;</i>历史总览</a>
+			<a data-href="{:url('paxiangbangdan')}" data-title="爬行榜单" class="layui-btn layui-btn-primary j-iframe"><i class="layui-icon">&#xe62d;</i>爬行榜单</a>
+			<a data-href="{:url('shezhi')}" data-title="设置" class="layui-btn layui-btn-primary j-iframe"><i class="layui-icon">&#xe62d;</i>设置</a>
+			{/if}
+			   
+        </div>
+    </div>
+    </blockquote>
+           
+
+
+
+
+    <blockquote class="layui-elem-quote layui-quote-nm">
+        提示信息：
+        <br>使用前请先点击初始化,如果不显示初始化按钮就是已经初始化完毕！
+
+    </blockquote>
+	
+</div>
+
+{include file="../../../application/admin/view/public/foot" /}
+
+
+</body>
+</html>

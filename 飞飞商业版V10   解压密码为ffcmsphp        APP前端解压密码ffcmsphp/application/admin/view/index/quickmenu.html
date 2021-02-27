@@ -1,0 +1,34 @@
+{include file="../../../application/admin/view/public/head" /}
+
+<div class="page-container">
+    <fieldset class="layui-elem-field layui-field-title" class="mt10">
+        <legend>自定义快捷菜单</legend>
+    </fieldset>
+
+    <blockquote class="layui-elem-quote layui-quote-nm">
+        格式要求：1.菜单名称,菜单链接地址；2.每个快捷菜单各占一行；<br>
+        1，支持远程地址，例如： 官方网站,//www.feifeicms.top/<br>
+        2，默认主题设置，例如： 喵哣主题设置,/admin.php/admin/miaopon/theme<br>
+        3，支持系统模块，例如： DP播放器设置,/addons/dplayer/system.php<br>
+		4，蜘蛛统计管理，例如： 蜘蛛统计管理,bianxianwangzhizhu/index<br>
+		5，支持系统模块，例如： 快捷数据设置,vod/data<br>
+		6，支持系统模块，例如： 快捷数据设置,vod/data<br>
+        7，支持行分隔符，例如： 分隔符,###
+    </blockquote>
+
+    <form class="layui-form" action="">
+        <div class="layui-form-item layui-form-text">
+            <textarea name="quickmenu" placeholder="请输入内容" class="layui-textarea" style="height:600px; resize:none">{$quickmenu}</textarea>
+        </div>
+        <div class="layui-form-item center">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="formSubmit">保 存</button>
+                <button class="layui-btn layui-btn-warm" type="reset">还 原</button>
+            </div>
+        </div>
+    </form>
+</div>
+{include file="../../../application/admin/view/public/foot" /}
+
+</body>
+</html>

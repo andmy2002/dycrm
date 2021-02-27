@@ -1,0 +1,69 @@
+{include file="../../../application/admin/view/public/head" /}
+
+ <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+ <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+<div class="page-container p10">
+
+<blockquote class="layui-elem-quote layui-quote-nm">
+    <div class="my-toolbar-box">
+        <div class="layui-btn-group">
+	<a class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe62d;</i>总爬行次数: {$paxinzonshu}</a>
+			{volist name="list" id="vo"}
+	<a class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe60a;</i>{$vo.name}: {$vo.num}</a>		
+			{/volist}
+			</div>
+			</div>
+</blockquote>	
+	<div id="container" style="min-width:400px;height:400px"></div>
+
+</div>
+
+{include file="../../../application/admin/view/public/foot" /}
+
+<script type="text/javascript">
+Highcharts.chart('container', {
+	chart: {
+		plotBackgroundColor: null,
+		plotBorderWidth: null,
+		plotShadow: false,
+		type: 'pie'
+	},
+	title: {
+		text: '{$time}蜘蛛爬行总览图'
+	},
+	tooltip: {
+		pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	},
+	plotOptions: {
+		pie: {
+			allowPointSelect: true,
+			cursor: 'pointer',
+			dataLabels: {
+				enabled: true,
+				format: '<b>{point.name}</b>: {point.y} 次',
+				style: {
+					color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+				}
+			}
+		}
+	},
+	series: [{
+		name: '占比',
+		colorByPoint: true,
+		data: [
+			{volist name="list" id="vo"}
+			{
+				name: '{$vo.name}蜘蛛',
+				y: {$vo.num}
+			},
+			
+			{/volist}
+			
+			]
+	}]
+});
+</script>
+</body>
+</html>

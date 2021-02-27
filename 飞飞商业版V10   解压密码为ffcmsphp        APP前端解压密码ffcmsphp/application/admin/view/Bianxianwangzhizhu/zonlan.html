@@ -1,0 +1,93 @@
+{include file="../../../application/admin/view/public/head" /}
+<div class="page-container p10">
+<blockquote class="layui-elem-quote layui-quote-nm">
+温馨提示：
+亲，经常打理网站是好事，有付出就有回报的,加油吧！！！
+
+    </blockquote>
+	
+    <form class="layui-form " method="post" id="pageListForm">
+        <table class="layui-table" lay-size="sm">
+            <thead>
+            <tr>
+                <th width="100">编号</th>
+                <th width="200">日期</th>
+                <th >百度</th>
+				<th >谷歌</th>
+				<th >好搜</th>
+				<th >搜狗</th>
+				<th >神马</th>
+				<th >必应</th>
+				<th >有道</th>
+				<th >搜搜</th>
+				<th >雅虎</th>
+				<th width="100">状态</th>
+				<th width="200">操作</th>
+            </tr>
+            </thead>
+
+            {volist name="list" id="vo"}
+            <tr>
+                <td>{$vo.tjid}</td>
+				<td>{$vo.time}</td>
+				<td>{$vo.baidu}</td>
+				<td>{$vo.guge}</td>
+				<td>{$vo.haosou}</td>
+				<td>{$vo.sougou}</td>
+				<td>{$vo.sm}</td>
+				<td>{$vo.biying}</td>
+				<td>{$vo.youdao}</td>
+				<td>{$vo.soso}</td>
+				<td>{$vo.yahu}</td>
+				<td>{if condition="$vo['state'] eq ''"}正常{else}{$vo.state}{/if}</td>
+                <td>
+                    <a class="layui-badge-rim j-tr-del" data-href="{:url('del_zl?ids='.$vo['tjid'])}" href="javascript:;" title="删除">删除</a>
+					<a class="layui-badge-rim j-tr-del" data-href="{:url('del_zl1?ids='.$vo['tjid'])}" href="javascript:;" title="删除">清空详情</a>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+		<div id="fy"></div>
+    </form>
+	
+</div>
+
+{include file="../../../application/admin/view/public/foot" /}
+
+<script type="text/javascript">
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  
+  //常规用法
+  laydate.render({
+    elem: '#kstime'
+  });
+  
+  //国际版
+  laydate.render({
+    elem: '#jstime'
+  });
+  
+});
+
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  laypage.render({
+    elem: 'fy' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: {if condition="$sjzs eq ''"}0{else}{$sjzs}{/if}//数据总数，从服务端得到
+	,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
+	,curr: {if condition="$fy eq ''"}0{else /}{$fy}{/if}
+	,jump: function(obj, first){
+
+	    //首次不执行
+	    if(!first){
+	      //do something
+		  window.location.href ='zonlan.html?fy='+obj.curr;
+	    }
+	  }
+  });
+});
+</script>
+</body>
+</html>

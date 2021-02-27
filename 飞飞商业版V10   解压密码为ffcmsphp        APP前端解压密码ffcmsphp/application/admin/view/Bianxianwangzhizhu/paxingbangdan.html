@@ -1,0 +1,103 @@
+{include file="../../../application/admin/view/public/head" /}
+<div class="page-container p10">
+<blockquote class="layui-elem-quote layui-quote-nm">
+<form class="layui-form" action="" method="get">
+      <label class="">开始日期： </label>
+      <div class="layui-input-inline">
+        <input type="text" name="kstime" class="layui-input" id="kstime" value="{if condition="$kstime eq ''"}{$time}{else /}{$kstime}{/if}" placeholder="开始日期">
+      </div>
+
+	
+
+      <label class=""> 结束日期：</label>
+      <div class="layui-input-inline">
+        <input type="text" name="jstime" class="layui-input" id="jstime" value="{if condition="$jstime eq ''"}{$time}{else /}{$jstime}{/if}" placeholder="结束日期">
+      </div>
+	  
+	  <label class=""> 蜘蛛类型：</label>
+	   <div class="layui-input-inline">
+	   <select name="zzlx" lay-verify="required">
+	          <option value="全部" {if condition="$zzlx eq '全部'"}selected{/if}>全部</option>
+	          <option value="百度" {if condition="$zzlx eq '百度'"}selected{/if}>百度</option>
+	          <option value="搜狗" {if condition="$zzlx eq '搜狗'"}selected{/if}>搜狗</option>
+	          <option value="谷歌" {if condition="$zzlx eq '谷歌'"}selected{/if}>谷歌</option>
+	          <option value="360" {if condition="$zzlx eq '360'"}selected{/if}>360</option>
+	          <option value="必应" {if condition="$zzlx eq '必应'"}selected{/if}>必应</option>
+			   <option value="神马" {if condition="$zzlx eq '神马'"}selected{/if}>神马</option>
+			    <option value="有道" {if condition="$zzlx eq '有道'"}selected{/if}>有道</option>
+				 <option value="搜搜" {if condition="$zzlx eq '搜搜'"}selected{/if}>搜搜</option>
+				  <option value="雅虎" {if condition="$zzlx eq '雅虎'"}selected{/if}>雅虎</option>
+	   </select>
+	  </div>
+	  
+	<div class="layui-input-inline">
+	   <button class="layui-btn" lay-submit lay-filter="formDemo">查询</button>
+	</div>  
+</form>	
+
+    </blockquote>
+	
+    <form class="layui-form " method="post" id="pageListForm">
+        <table class="layui-table" lay-size="sm">
+            <thead>
+            <tr>
+                <th width="100">编号</th>
+                <th >受访地址</th>
+                <th width="300">爬行次数</th>
+            </tr>
+            </thead>
+
+            {volist name="list" id="vo"}
+            <tr>
+                <td>{$vo.urlid}</td>
+                <td>
+					{$vo.url}
+                </td>
+                <td>{$vo.num}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+		<div id="fy"></div>
+    </form>
+	
+</div>
+
+{include file="../../../application/admin/view/public/foot" /}
+
+<script type="text/javascript">
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  
+  //常规用法
+  laydate.render({
+    elem: '#kstime'
+  });
+  
+  //国际版
+  laydate.render({
+    elem: '#jstime'
+  });
+  
+});
+
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  laypage.render({
+    elem: 'fy' //注意，这里的 test1 是 ID，不用加 # 号
+    ,count: {if condition="$sjzs eq ''"}0{else}{$sjzs}{/if}//数据总数，从服务端得到
+	,layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip']
+	,curr: {if condition="$fy eq ''"}0{else}{$fy}{/if}
+	,jump: function(obj, first){
+
+	    //首次不执行
+	    if(!first){
+	      //do something
+		  window.location.href ='shujuchaxun.html?kstime={$kstime}&jstime={$jstime}&zzlx={$zzlx}&fy='+obj.curr;
+	    }
+	  }
+  });
+});
+</script>
+</body>
+</html>

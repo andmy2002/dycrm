@@ -1,0 +1,43 @@
+{include file="../../../application/admin/view/public/head" /}
+<div class="page-container p10">
+<blockquote class="layui-elem-quote layui-quote-nm">
+
+<form class="layui-form" action="?type=4ds" method="get">
+	<input type="hidden" name="type" value="shezhi"/>
+   <label class="layui-form-label">功能设置</label>
+   <div class="layui-input-inline">
+      <input type="checkbox" name="kaiqi" title="开启统计" {if condition="$shezhi['kaiqi'] eq 1"}checked{/if}>
+      <input type="checkbox" name="tongjixiangqing" title="开启统计详情" {if condition="$shezhi['tongjixiangqing'] eq 1"}checked{/if}>
+    </div>
+	
+	<div class="layui-input-inline">
+	<button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+	</div>
+	
+</form>
+
+    </blockquote>
+
+</div>
+
+{include file="../../../application/admin/view/public/foot" /}
+
+<script type="text/javascript">
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  
+  //常规用法
+  laydate.render({
+    elem: '#kstime'
+  });
+  
+  //国际版
+  laydate.render({
+    elem: '#jstime'
+  });
+  
+});
+
+</script>
+</body>
+</html>

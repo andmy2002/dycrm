@@ -1,0 +1,137 @@
+<div id="topnav" class="head_box">
+    <div class="header">
+	<div class="head_a">
+		<div class="head_logo">
+			<a title="{$feifeicms.site_name}" class="logo logo_b" style="background-image: url({$miaopon['theme']['logo']['bpic']|ffcms_default=substr($feifeicms['path_tpl'], strlen($feifeicms['path'])).'demo/img/logo_black.png'|ffcms_url_img});" href="{$feifeicms.path}"></a>
+			<a title="{$feifeicms.site_name}" class="logo logo_w" style="background-image: url({$miaopon['theme']['logo']['wpic']|ffcms_default=substr($feifeicms['path_tpl'], strlen($feifeicms['path'])).'demo/img/logo_white.png'|ffcms_url_img});" href="{$feifeicms.path}"></a>
+		</div>
+		<div class="head_menu_a hidden_xs hidden_mi">
+	        <ul class="top_nav clearfix">
+	        	<li {if condition="$feifeicms.aid eq 1" }class="active"{/if}><a href="{$feifeicms.path}" title="首页">首页</a></li>
+		        {feifeicms:type num="7" order="asc" by="sort" ids="'.$miaopon['theme']['nav']['id'].'"}
+                <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])" }class="active"{/if}><a href="{:ffcms_url_type($vo)}">{$vo.type_name}</a>
+                </li>
+                {/feifeicms:type}
+                {if condition="$miaopon['theme']['nav']['zdybtn'] eq 1"}
+                {if condition="$miaopon['theme']['nav']['zdybtn1'] eq 1"}
+				<li><a href="{$miaopon['theme']['nav']['zdylink1']}" title="{$miaopon['theme']['nav']['zdyname1']}" target="_blank">{$miaopon['theme']['nav']['zdyname1']}</a></li>
+				{/if}
+				{if condition="$miaopon['theme']['nav']['zdybtn2'] eq 1"}
+				<li><a href="{$miaopon['theme']['nav']['zdylink2']}" title="{$miaopon['theme']['nav']['zdyname2']}" target="_blank">{$miaopon['theme']['nav']['zdyname2']}</a></li>
+				{/if}
+				{if condition="$miaopon['theme']['nav']['zdybtn3'] eq 1"}
+				<li><a href="{$miaopon['theme']['nav']['zdylink3']}" title="{$miaopon['theme']['nav']['zdyname3']}" target="_blank">{$miaopon['theme']['nav']['zdyname3']}</a></li>
+				{/if}
+				{if condition="$miaopon['theme']['nav']['zdybtn4'] eq 1"}
+				<li><a href="{$miaopon['theme']['nav']['zdylink4']}" title="{$miaopon['theme']['nav']['zdyname4']}" target="_blank">{$miaopon['theme']['nav']['zdyname4']}</a></li>
+				{/if}{/if}
+            </ul>
+		</div>
+		<div class="head_user">
+		    <ul>
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'a') !==false"}
+                <li class="top_ico"> 
+                    <a href="javascript:;" class="history" title="观看历史"><i class="iconfont">&#xe624;</i></a>
+                </li>
+                {/if}
+                {if condition="$miaopon['theme']['topic']['btn'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'b') !==false"}
+                <li class="top_ico">
+                    <a href="{:ffcms_url_topic_index()}" title="{$miaopon['theme']['topic']['title']|ffcms_default='专题'}"><i class="iconfont">&#xe64c;</i></a>
+                </li>
+                {/if}
+                {/if}
+                {if condition="$GLOBALS['config']['gbook']['status'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'c') !==false"}
+                <li class="top_ico">
+                    <a href="{:ffcms_url('gbook/index')}" title="{$miaopon['theme']['gbook']['title']|ffcms_default='留言'}"><i class="iconfont">&#xe632;</i></a>
+                </li>
+                {/if}
+                {/if}
+                {if condition="$miaopon['theme']['map']['btn'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'d') !==false"}
+                <li class="top_ico">
+                    <a href="{:ffcms_url('map/index')}" title="{$miaopon['theme']['map']['title']|ffcms_default='最新'}"><i class="iconfont">&#xe652;</i></a>
+                </li>
+                {/if}
+                {/if}
+                {if condition="$miaopon['theme']['rank']['btn'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'e') !==false"}
+                <li class="top_ico">
+                    <a href="{:ffcms_url('label/rank')}" title="{$miaopon['theme']['rank']['title']|ffcms_default='排行榜'}"><i class="iconfont">&#xe618;</i></a>
+                </li>
+                {/if}
+                {/if}
+                {if condition="$miaopon['theme']['apps']['btn'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'f') !==false"}
+                <li class="top_ico">
+                    <a href="{$miaopon['theme']['apps']['link']}" title="下载APP" target="_blank"><i class="iconfont">&#xe653;</i></a>
+                </li>
+                {/if}
+                {/if}
+                {if condition="$miaopon['theme']['qq']['btn'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'g') !==false"}
+                <li class="top_ico">
+                    <a href="{$miaopon['theme']['qq']['link']}" title="{$miaopon['theme']['qq']['title']|ffcms_default='QQ联系'}" target="_blank"><i class="iconfont">&#xe66a;</i></a>
+                </li>
+                {/if}
+                {/if}
+                {if condition="$miaopon['theme']['weixin']['btn'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'h') !==false"}
+                <li class="top_ico">
+                    <a class="top_ico btn_wxgzh" href="javascript:void(0)" title="二维码"><i class="iconfont">&#xe614;</i></a>
+                </li>
+                {/if}
+                {/if}
+				{if condition="$miaopon['theme']['rtnav']['zdybtn1'] eq 1"}
+				<li class="top_ico">
+					<a href="{$miaopon['theme']['rtnav']['zdylink1']}" title="{$miaopon['theme']['rtnav']['zdyname1']}" target="_blank"><i class="iconfont">&#xe666;</i></a>
+				</li>
+				{/if}
+          		{if condition="$miaopon['theme']['rtnav']['zdybtn2'] eq 1"}
+				<li class="top_ico">
+					<a href="{$miaopon['theme']['rtnav']['zdylink2']}" title="{$miaopon['theme']['rtnav']['zdyname2']}" target="_blank"><i class="iconfont">&#xe668;</i></a>
+				</li>
+				{/if}
+           		{if condition="$GLOBALS['config']['user']['status'] eq 1"}
+                {if condition="strpos($miaopon['theme']['rtnav']['ym'],'i') !==false"}
+                <li class="top_ico">
+					<a class="ffcms_user" href="javascript:;" title="{$miaopon['theme']['user']['title']|ffcms_default='会员'}"><i class="iconfont">&#xe62b;</i></a>
+                </li>
+                {/if}
+                {/if}
+            </ul>
+		</div>
+	</div>
+	</div>
+	<div class="header"">
+		<div class="head_b">
+		    <a class="bk_btn fl" href="javascript:FFCMS.GoBack()" title="返回"><i class="iconfont">&#xe625;</i></a>
+		    <span class="hd_tit fl">{$obj.vod_name}{$obj.topic_name}{$obj.art_name}</span>
+		    <a class="se_btn fr open-share" href="javascript:void(0)" title="分享"><i class="iconfont">&#xe615;</i></a>
+		    {if condition="$GLOBALS['config']['comment']['status'] eq 1"}
+		    <a class="se_btn pl_btn fr" href="#pinglun" title="评论"><i class="iconfont">&#xe632;</i></a>
+		    {/if}
+			<div class="head_menu_b">
+			<a class="menu" href="javascript:void(0)" title="全部分类"><i class="iconfont menu_ico">&#xe640;</i><span class="hidden_xs">&nbsp;全部分类</span></a>
+				{include file="widget/all_menu"}
+			</div>
+			<div class="head_search">
+				<form id="search" name="search" method="get" action="{:ffcms_url('vod/search')}" onsubmit="return qrsearch();">
+					<i class="iconfont">&#xe633;</i>
+					<input id="txt" type="text" name="wd" class="ffcms_wd form_control" value="{$param.wd}" placeholder="{$miaopon['theme']['search']['text']|ffcms_default='输入搜索关键字'}">
+					<button class="submit" id="searchbutton" type="submit" name="submit">搜索</button>
+				</form>
+			</div>
+			<div class="head_hot_search hidden_xs">
+				<ul class="pops_list">
+					<li><span class="hot_search_tit"><i class="iconfont">&#xe631;</i>&nbsp;热门搜索</span></li>
+					{feifeicms:foreach name=":explode(',',$feifeicms.search_hot)"}{if condition="$key lt 5"}
+					<li><a href="{:ffcms_url('vod/search',['wd'=>$vo])}"><span class="hot_name">{$vo}</span></a></li>{/if}
+					{/feifeicms:foreach}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+		

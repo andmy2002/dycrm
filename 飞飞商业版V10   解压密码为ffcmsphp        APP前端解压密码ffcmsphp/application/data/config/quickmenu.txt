@@ -1,0 +1,6 @@
+喵哣主题设置,/admin.php/admin/miaopon/theme
+DP播放器设置,/addons/dplayer/system.php
+快捷系统配置,system/config
+快捷资讯管理,art/data
+行分隔符,###
+蜘蛛统计管理,bianxianwangzhizhu/index

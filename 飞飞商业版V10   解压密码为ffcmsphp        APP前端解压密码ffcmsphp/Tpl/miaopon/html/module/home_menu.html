@@ -1,0 +1,52 @@
+{if condition="$miaopon['theme']['type']['meunbtn'] eq 1"}
+<div class="row hidden_mb">
+    <div class="pannel">
+        <ul class="hom_mob_list">
+            {feifeicms:type num="5" ids="'.$miaopon['theme']['type']['meunid'].'" order="asc" by="sort" id="vo1" key="key1"}
+            <li>
+                <a class="mob_btn mob_btn{$key1}" href="{:ffcms_url_type($vo1)}">
+					{include file="widget/icon"}<span class="mob_font">{$vo1.type_name}</span>
+				</a>
+            </li>
+            {/feifeicms:type}
+        </ul>
+    </div>
+</div>
+{/if}
+<div class="row">
+    <div class="pannel">
+        <ul class="hom_sm_list vodlist_wi">
+            {if condition="$miaopon['theme']['notice']['btn'] eq 1"}
+            <li class="notice"{if condition="$miaopon['theme']['type']['meunbtn'] eq 0" } style="width: 100%;"{/if}>
+                <div class="smlist_box">
+                    {include file="widget/notice"}
+                    <i class="iconfont nico">&#xe62d;</i>
+                </div>
+            </li>
+            {/if}
+            {if condition="$miaopon['theme']['type']['meunbtn'] eq 1"}
+				{if condition="$miaopon['theme']['notice']['btn'] eq 1"}
+				{if condition="$miaopon['theme']['type']['meunys'] eq 'one'"}
+				{feifeicms:type num="2" ids="'.$miaopon['theme']['type']['meunid'].'" order="asc" by="sort" id="vo1" key="key1"}
+				{include file="widget/home_menu_sm"}
+				{/feifeicms:type}
+				{elseif condition="$miaopon['theme']['type']['meunys'] eq 'two'"}
+				{feifeicms:type num="5" ids="'.$miaopon['theme']['type']['meunid'].'" order="asc" by="sort" id="vo1" key="key1"}
+				{include file="widget/home_menu_sm"}
+				{/feifeicms:type}
+				{/if}
+				{else}
+				{if condition="$miaopon['theme']['type']['meunys'] eq 'one'"}
+				{feifeicms:type num="3" ids="'.$miaopon['theme']['type']['meunid'].'" order="asc" by="sort" id="vo1" key="key1"}
+				{include file="widget/home_menu_sm"}
+				{/feifeicms:type}
+				{elseif condition="$miaopon['theme']['type']['meunys'] eq 'two'"}
+				{feifeicms:type num="6" ids="'.$miaopon['theme']['type']['meunid'].'" order="asc" by="sort" id="vo1" key="key1"}
+				{include file="widget/home_menu_sm"}
+				{/feifeicms:type}
+				{/if}
+                {/if}
+            {/if}
+        </ul>
+    </div>
+</div>

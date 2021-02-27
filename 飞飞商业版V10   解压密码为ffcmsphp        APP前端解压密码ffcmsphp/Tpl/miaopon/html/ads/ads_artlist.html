@@ -1,0 +1,13 @@
+{if$miaopon['theme']['ads']['btn']==1||$miaopon['theme']['ads']['btn']==2&&$user.group_id lt 3}
+{if condition="$miaopon['theme']['ads']['artlist']['btn'] eq 1"}
+<li>
+   <a target="_blank" rel="nofollow" href="{$miaopon['theme']['ads']['artlist']['link']}" title="{$miaopon['theme']['ads']['artlist']['title']}">
+   <div class="artlr_tit"><p class="artlr_b">{$miaopon['theme']['ads']['artlist']['title']}</p><p class="artlr_name">随便看看</p></div>
+   <div class="artlr_pic lazyload" data-original="{:ffcms_url_img($miaopon['theme']['ads']['artlist']['pic'])}">
+   {if condition="$miaopon['theme']['ads']['artlist']['tbtn'] eq 1"}
+       <span class="ad_tips">广告</span>
+   {/if}
+   </div>
+   </a>
+</li>
+{/if}{/if}

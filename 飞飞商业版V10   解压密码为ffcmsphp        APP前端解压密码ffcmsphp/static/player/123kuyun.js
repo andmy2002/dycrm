@@ -1,0 +1,2 @@
+FeifeiPlayer.Html = '<iframe width="100%" height="' + FeifeiPlayer.Height + '" class="embed-responsive-item" src="' + FeifeiPlayer.PlayUrl + '" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"  allowfullscreen="true"></iframe>';
+FeifeiPlayer.Show();

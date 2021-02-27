@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	{include file="public/include"}
+	<link rel="stylesheet" href="{$feifeicms.path_tpl}demo/css/hlactor.css" type="text/css" />
+</head>
+{include file="public/head"}
+	<!--明星顶部开始-->	
+<div class="bg_light">
+   <div class="container">     
+		<div class="row">
+			<div class="pannel layout-box">
+				<div class="pannel_head clearfix">
+                    <span class="text_muted pull_right">
+						<a href="{:ffcms_url('actor/show')}">更多<i class="iconfont more_i">&#xe623;</i></a>
+                    </span>
+                    <h2 class="title"><i class="iconfont">&#58956;</i>荧屏巨星</h2>	
+                </div>
+				<!--小分类模块结束-->
+				<div class="clearfix" id="myTab">
+					<ul class="box-star-list">
+						{feifeicms:actor num="8" level="1" order="desc" by="time"}
+						<li class="col-md-1 col-sm-2 col-xs-4 "  {if condition="$key == 1"}class="active"{/if}>
+							<a class="star-pic loading img-circle" style="padding-top: 100%; background: url({$vo.actor_pic|ffcms_url_img}) no-repeat;background-size:cover;"
+							    href="javascript:;">
+								<span>{$vo.actor_name}</span>
+							</a>
+						</li>{/feifeicms:actor}
+					</ul>
+				</div>
+				<div class="clearfix star-video-list">
+					{feifeicms:actor num="8" level="1" order="desc" by="time" id="vo1" key="key1"}
+					<ul class="box-star-list fade" id="hot_star_{$key1}">
+						{feifeicms:vod num="6" type="'.$vo['type_id'].'" actor="'.$vo1['actor_name'].'" order="desc" by="time" id="vo2" key="key2"}
+						<li class="vodlist_item" {if condition="$key1 == 1"}style="display:block"{/if} id="con_hot_star__{$key1}">
+							<a class="vodlist_thumb lazyload" href="{:ffcms_url_vod_detail($vo2)}" title="{$vo2.vod_name}" style="background: url({$vo2.vod_pic|ffcms_url_img}) no-repeat;background-size:cover;">						
+								<span class="play hidden_xs"></span>
+								{if condition="($feifeicms.aid eq 2) OR ($feifeicms.aid eq 13)"}
+								<span class="vodlist_top">{$vo2.type.type_name}</span>
+						        {/if}
+						        {if condition="$vo2['type_id_1']==1"}
+						        {if condition="$vo2.vod_score eq 0"}
+						        <span class="pic_text text_right">{if condition="$vo2.vod_remarks neq ''"}{$vo2.vod_remarks}{elseif condition="$vo2.vod_serial gt 0"}第{$vo2.vod_serial}集{else /}已完结{/if}</span>
+						        {else/}
+						        <span class="pic_text text_right text_dy">{$vo2.vod_score}</span>
+						        {/if}
+						        {else/}
+								<span class="pic_text text_right">{if condition="$vo2.vod_remarks neq ''"}{$vo2.vod_remarks}{elseif condition="$vo2.vod_serial gt 0"}第{$vo2.vod_serial}集{else /}已完结{/if}</span>
+								{/if}
+							</a>
+							<div class="vodlist_titbox">									
+								<p class="vodlist_title"><a href="{:ffcms_url_vod_detail($vo2)}" title="{$vo2.vod_name}">{$vo2.vod_name}</a></p>
+								<p class="vodlist_sub">{$vo2.vod_sub|ffcms_default=$vo2.vod_actor|ffcms_default='未知'}</p>
+							</div>
+						</li>{/feifeicms:vod}
+					</ul>{/feifeicms:actor}
+				</div>
+			</div>
+			
+		</div>
+     </div>
+</div>
+	<!--明星分类开始-->
+    <div class="container www.miaopon.com">
+      {feifeicms:type  ids="'.$miaopon['theme']['type']['mx'].'" id="vo1" order="asc" by="time"}
+        <div class="vod_row">
+            <div class="pannel">
+                <div class="pannel_head clearfix">
+                    <span class="text_muted pull_right">
+						<a href="{:ffcms_url($obj,['area'=>$vo1],'show')}">更多<i class="iconfont more_i">&#xe623;</i></a>
+                    </span>
+                    <h2 class="title"><i class="iconfont">&#58921;</i>{$vo1.type_name}明星</h2>	
+                </div>
+                <ul class="vodlist vodlist_wi clearfix">
+                    {feifeicms:actor num="12" paging="no"  type="'.$vo1['type_id'].'" order="asc" by="sort"}
+					   {include file="actor/vod_actor"}
+                  	{/feifeicms:actor}
+                </ul>
+            </div>
+        </div>
+      {/feifeicms:type}
+        <div class="vod_row">
+            <div class="pannel">
+                <div class="pannel_head clearfix">
+                    <span class="text_muted pull_right">
+						<a href="{:ffcms_url('actor/show')}">更多<i class="iconfont more_i">&#xe623;</i></a>
+                    </span>
+                    <h2 class="title"><i class="iconfont">&#58921;</i>全部明星</h2>	
+                </div>
+                <ul class="vodlist vodlist_wi clearfix">
+                    {feifeicms:actor num="48" paging="no" order="desc" by="sort"}
+					   {include file="actor/vod_actor"}
+                  	{/feifeicms:actor}
+                </ul>
+            </div>
+        </div>
+	<!--明星分类结束-->
+   </div>
+
+   <div class="container">     
+        <div class="row">
+            {feifeicms:type ids="5" order="asc" by="sort" id="vo1" key="key1"}
+            <div class="pannel">
+                <div class="pannel_head clearfix">
+                    <a class="text_muted pull_right" href="{:ffcms_url_type($vo1)}">更多<i class="iconfont more_i">&#xe623;</i></a>
+                    <span class="hidden_xs pull_right">
+						{feifeicms:type num="6" parent="'.$vo1['type_id'].'" order="asc" by="sort" id="vo2" key="key2"}
+                        <a href="{:ffcms_url_type($vo2)}" class="text_muted">{$vo2.type_name}</a> <span class="split_line"></span>
+                        {/feifeicms:type}
+                    </span>
+                    <h2 class="title"><i class="iconfont">&#xe630;</i>{$vo1.type_name}热点</h2>	
+                </div>
+                <ul class="arthom_list list_v2 clearfix">
+                    {feifeicms:art num="8" type="'.$vo1['type_id'].'" order="desc" by="time"}
+					   {include file="widget/art_box_home"}
+					{/feifeicms:art}
+                </ul>
+            </div>
+            {/feifeicms:type}
+        </div>
+     </div>
+    {include file="public/foot"}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+	{feifeicms:vod num="100" order="desc" by="time"}
+	<url>
+		<loc>{$feifeicms.http_type}{$feifeicms.site_url}{:ffcms_url_vod_detail($vo)}</loc>
+		<lastmod>{$vo.vod_time|date='Y-m-d H:i:s',###}</lastmod>
+		<changefreq>always</changefreq>
+		<priority>1.0</priority>
+	</url>
+	{/feifeicms:vod}{feifeicms:art num="100" order="desc" by="time"}
+	<url>
+		<loc>{$feifeicms.http_type}{$feifeicms.site_url}{:ffcms_url_art_detail($vo)}</loc>
+		<lastmod>{$vo.art_time|date='Y-m-d H:i:s',###}</lastmod>
+		<changefreq>always</changefreq>
+		<priority>1.0</priority>
+	</url>
+	{/feifeicms:art}
+</urlset>

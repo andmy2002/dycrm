@@ -1,0 +1,16 @@
+<div class="header">
+	<div class="layout fn-clear">
+	    <div class="user-logo">
+			<a title="{$feifeicms.site_name}" style="background-image: url({$miaopon['theme']['logo']['wpic']|ffcms_default=substr($feifeicms['path_tpl'], strlen($feifeicms['path'])).'demo/img/logo_white.png'|ffcms_url_img});" href="{$feifeicms.path}"></a>
+		</div>
+		<div class="user-n"><span>个人中心</span></div>
+		<ul class="nav">
+		    <li class="nav-item"><a class="nav-link" href="javascript:FFCMS.GoBack()">返回</a></li>
+			<li class="nav-item"><a class="nav-link" href="{$feifeicms.path}">返回首页</a></li>
+			<li class="nav-item" ><a class="nav-link">{$obj.user_name}</a></li>
+			<li class="nav-item" ><a class="nav-link" href="{:url('user/logout')}" >退出</a></li>
+		</ul>
+	</div>
+</div>
+<!-- // i-header end -->
+

@@ -1,0 +1,7 @@
+{if condition="$GLOBALS['config']['site']['vod_wads_style'] eq 1"}
+<a class="hidden_xs" href="{$feifeicms.vod_wads_link}" target="_blank" rel="nofollow"><img src="{:ffcms_url_img($feifeicms.vod_wads_imgpc)}"></a>
+<a class="hidden_mb" href="{$feifeicms.vod_wads_link}" target="_blank" rel="nofollow"><img src="{:ffcms_url_img($feifeicms.vod_wads_imgmo)}"></a>
+{/if}
+{if condition="$GLOBALS['config']['site']['vod_wads_style'] eq 2"}
+{$feifeicms.vod_wads_content}
+{/if}

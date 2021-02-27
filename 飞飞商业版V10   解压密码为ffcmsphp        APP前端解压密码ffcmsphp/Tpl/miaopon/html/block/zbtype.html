@@ -1,0 +1,35 @@
+<body id="graypage">
+     {include file="block/head"}
+  <div class="container www.miaopon.com">
+     <!-- 筛选 -->
+         <div class="pannel clearfix">
+			  <div class="type_list_menu">
+		    		<ul class="clearfix">
+		    			<li class="type_all"><a href="{:ffcms_url_type($obj,[],'show')}">全部{$obj.type_name}</a></li>
+                        {feifeicms:type ids="current" order="asc" by="sort"}
+                        <li {if condition="($vo.type_id eq $GLOBALS['type_id'] || $vo.type_id eq $GLOBALS['type_pid'])" }class="active"{/if}><a href="{:ffcms_url_type($vo,[],'show')}">{$vo.type_name}</a></li>
+		                {/feifeicms:type}	
+		    		</ul>
+		     </div>
+		 </div>
+	 <!-- end 筛选 -->
+        <div class="vod_row">
+            {feifeicms:type parent="current" order="asc" by="sort"}
+            <div class="pannel clearfix">
+                <div class="pannel_head clearfix">
+                <a class="text_muted pull_right" href="{:ffcms_url_type($vo,[],'show')}">更多<i class="iconfont more_i">&#xe623;</i></a>
+					<h2 class="title">{$vo.type_name}</h2>
+	            </div>
+				<!-- 列表 -->			
+				<ul class="vodlist vodlist_wi zbvodlist_wi clearfix">
+					{feifeicms:vod num="12" type="'.$vo['type_id'].'" order="desc" by="time"}
+					{include file="block/zbvod_box"}
+					{/feifeicms:vod}	 
+				</ul>
+				<!-- end 列表 -->	
+			</div>
+            {/feifeicms:type}
+        </div>
+    </div>
+	{include file="block/foot"}
+</body>
